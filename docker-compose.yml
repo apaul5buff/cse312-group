@@ -1,0 +1,22 @@
+version: '3.3'
+
+
+services:
+  mongo:
+    image: mongo:4.2.5
+  ws:
+    image: mongo:4.2.5
+  chat:
+    image: mongo:4.2.5
+    volumes:
+      - db-data:/data/db
+  app:
+    build: .
+    restart: always
+    environment:
+      WAIT_HOSTS: mongo:27017
+    ports:
+      - '8080:8000'
+volumes:
+  db-data:
+

@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>CSE312 Sample Front End</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body onload="welcome();">
+
+<h1>CSE312 Sample Page</h1>
+
+<p id="paragraph">
+    This text is from the HTML file 🙂
+</p>
+
+<p>
+    Here's a {{image_name}}
+</p>
+
+<img src="image/{{image_filename}}" alt="It's a {{image_name}}" class="my_image"/>
+
+
+<label for="chat-comment">Chat: </label>
+<input id="chat-comment" type="text" name="comment">
+
+<button onclick="sendMessage()">Send</button>
+
+<div id="chat"></div>
+
+<br/>
+<button onclick="startVideo()">Start My Video</button>
+<br/>
+<button onclick="connectWebRTC()">Start Video Chat</button>
+<br/>
+
+<video id="myVideo" autoplay muted></video>
+<br/>
+<video id="otherVideo" autoplay></video>
+
+
+<br/><br/>
+<form action="/image-upload" id="image-form" method="post" enctype="multipart/form-data">
+    <input value={{token}} name="xsrf_token" hidden> 
+    <label for="image-form-comment">Comment: </label>
+    <textarea id="image-form-comment" name="comment" cols="40" rows="6"></textarea>
+    <br/>
+    <label for="form-file">Image: </label>
+    <input id="form-file" type="file" name="upload">
+    <input type="submit" value="Post">
+ </form>
+
+ {{loop_img}}
+ <b>{{comment}}</b>: <img src="image/{{upload}}" ><br/>
+ {{end_loop_img}}
+
+ <br/><br/>
+<form action="/insecure-chat" id="chat-form" method="post" enctype="multipart/form-data">
+    <label for="chat-form-username">Username: </label>
+    <input id="chat-form-username" type="text" name="username"/>
+    <br/>
+    <label for="chat-form-message">Message: </label>
+    <input id="chat-form-message" type="text" name="message">
+    <input type="submit" value="Post">
+</form>
+
+ {{loop}}
+ <b>{{username}}</b>: {{message}}<br/>
+ {{end_loop}}
+
+ <br/>
+ <hr/>
+
+
+
+<script src="functions.js"></script>
+</body>
+</html>
