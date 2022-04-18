@@ -1,1 +1,0 @@
-#differnt compenents
