@@ -1,3 +1,4 @@
+from urllib import response
 import util.wsbase as db
 
 import socketserver
@@ -9,11 +10,20 @@ import json
 from server import myTCPhandler
 from util.request import Request
 from util.router import Route
+from util.response import forbid, redirect
+from util.request import parse_multipart
 from util.response import generate_response,ws_response,chat_response
 
 def add_paths(router):
     router.add_route(Route('GET', '/websocket', websocket_request))
     router.add_route(Route('GET', '/chat-history', chat))
+    router.add_route(Route('GET','/active-users',users))
+
+def users(request,handler):
+    connections=myTCPhandler.ws_connections
+    userList = [ user['username'] for user in connections ]
+    response=generate_response(json.dumps(userList).encode())
+    handler.request.sendall(response)
 
 def chat(request,handler):
     posts=db.list_all()
@@ -88,6 +98,22 @@ def websocket_request(request:Request,handler:socketserver.BaseRequestHandler):
             frame=generate_frame(mess)
             #error in Web RTC stuff somewhere
             other_handler.request.sendall(frame)
+        elif message_type=="dmMessage":
+            unsafeMessage=body_dict["comment"] 
+            safeMessage=escape_html(unsafeMessage)
+            unsafeName=body_dict["toUser"] 
+            safeName=escape_html(unsafeName)
+            del body_dict["comment"]
+            del body_dict["toUser"]
+            body_dict["username"]=username
+            body_dict["comment"]=safeMessage
+            returnMessage=json.dumps(body_dict).encode()
+            to_send=generate_frame(returnMessage)
+            for connection in myTCPhandler.ws_connections:
+                if connection['username']==safeName:
+                    to_user=connection['socket']
+                    to_user.request.sendall(to_send)
+
         else:
             print("error invalid message type")
 

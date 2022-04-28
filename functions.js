@@ -7,6 +7,7 @@ let webRTCConnection;
 document.addEventListener("keypress", function (event) {
     if (event.code === "Enter") {
         sendMessage();
+        sendDM();
     }
 });
 
@@ -42,12 +43,54 @@ function get_chat_history() {
     request.send();
 }
 
+function dmAlert(chatMessage){
+    alert(chatMessage['username']+ ": "+chatMessage["comment"])
+}
+
+function add_username(user){
+    let users = document.getElementById('allUsers');
+    users.innerHTML+="<b>" + user + "</b> "+ "<br/>";
+}
+
+function get_all_users_online(){
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            const messages = JSON.parse(this.response);
+            for (const message of messages) {
+                add_username(message);
+            }
+        }
+    };
+    request.open("GET", "/active-users");
+    request.send();
+}
+
+function sendDM() {
+    const userBox = document.getElementById("dm-user")
+    const name = userBox.value;
+    userBox.value = "";
+    userBox.focus();
+    if (name !== "") {
+        const chatBox = document.getElementById("dm-mess")
+        const comment = chatBox.value;
+        chatBox.value = "";
+        chatBox.focus();
+        if (comment !== ""){
+            socket.send(JSON.stringify({'messageType': 'dmMessage', 'comment': comment, 'toUser':name}));
+        }
+    }
+}
+
 // Called whenever data is received from the server over the WebSocket connection
 socket.onmessage = function (ws_message) {
     const message = JSON.parse(ws_message.data);
     const messageType = message.messageType
 
     switch (messageType) {
+        case 'dmMessage':
+            dmAlert(message);
+            break;
         case 'chatMessage':
             addMessage(message);
             break;
@@ -113,6 +156,7 @@ function welcome() {
     document.getElementById("paragraph").innerHTML += "<br/>This text was added by JavaScript 😀"
 
     get_chat_history()
+    get_all_users_online()
 
     // use this line to start your video without having to click a button. Helpful for debugging
     // startVideo();

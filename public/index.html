@@ -16,8 +16,19 @@
 </p>
 
 <img src="image/{{image_filename}}" alt="It's a {{image_name}}" class="my_image"/>
+<br/><br/>
+<div id="allUsers"></div>
+<br/><br/>
 
+<label for="dm-user">Send DM To: </label>
+<input id="dm-user" type="text" name="user">
+<br/><br/>
+<label for="dm-mess">DM Message: </label>
+<input id="dm-mess" type="text" name="mess">
 
+<button onclick="sendDm()">Press Enter to DM</button>
+
+<br/><br/>
 <label for="chat-comment">Chat: </label>
 <input id="chat-comment" type="text" name="comment">
 
