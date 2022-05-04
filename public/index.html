@@ -1,11 +1,11 @@
 <html>
 <head>
-    <title>CSE312 Colleg Dropouts</title>
+    <title>College Dropouts</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body onload="welcome();">
 
-<h1>Collge Dropout Page</h1>
+<h1>Collge Dropout Page :)</h1>
 
 <p id="paragraph">
     This is all based on HW code.
@@ -17,21 +17,24 @@
 
 <img src="image/{{image_filename}}" alt="It's a {{image_name}}" class="my_image"/>
 <br/><br/>
+
+<p>
+    Users Online: (refresh to update)
+</p>
 <div id="allUsers"></div>
 <br/><br/>
 
 <label for="dm-user">Send DM To: </label>
 <input id="dm-user" type="text" name="user">
-<br/><br/>
 <label for="dm-mess">DM Message: </label>
 <input id="dm-mess" type="text" name="mess">
-<br/><br/>
-<button onclick="sendDm()">Press Enter to DM</button>
+<p>
+    Press Enter to DM
+</p>
 
 <br/><br/>
 <label for="chat-comment">Chat: </label>
 <input id="chat-comment" type="text" name="comment">
-
 <button onclick="sendMessage()">Send</button>
 
 <div id="chat"></div>
@@ -53,23 +56,10 @@
  {{end_loop_img}}
 
  <br/><br/>
-<form action="/insecure-chat" id="chat-form" method="post" enctype="multipart/form-data">
-    <label for="chat-form-username">Username: </label>
-    <input id="chat-form-username" type="text" name="username"/>
-    <br/>
-    <label for="chat-form-message">Message: </label>
-    <input id="chat-form-message" type="text" name="message">
-    <input type="submit" value="Post">
-</form>
 
- {{loop}}
- <b>{{username}}</b>: {{message}}<br/>
- {{end_loop}}
 
  <br/>
  <hr/>
-
-
 
 <script src="functions.js"></script>
 </body>

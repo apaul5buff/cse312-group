@@ -19,7 +19,7 @@ def home(request, handler):
     token=secrets.token_urlsafe(16)
     db.add_token(token)
 
-    content= render_templete("public/index.html",{"image_name": "Eagle!",
+    content= render_templete("public/index.html",{"image_name": "Parrot!",
     "image_filename":"parrot.jpg", "loop_data":posts, "loop_img":img, "token":token})
 
     response=generate_response(content.encode(),"text/html; charset=t=utf-8", "200 OK")
