@@ -7,3 +7,21 @@ body {
 .my_image {
     width: 120px;
 }
+
+#userlikenolike{
+    height: 190px;
+    width: 480px;
+    border: 5px solid goldenrod;
+}
+
+#LIKE{
+    size: A3;
+}
+
+#DISLIKE{
+    size: A3;
+}
+
+h1{
+    color: black;
+}

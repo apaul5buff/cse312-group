@@ -3,6 +3,26 @@ const socket = new WebSocket('ws://' + window.location.host + '/websocket');
 
 let webRTCConnection;
 
+let like = document.getElementById('increment');
+let dislike = document.getElementById('decrement')
+
+let numberoflike = document.getElementById('LIKE')
+let numberofdislike = document.getElementById('DISLIKE')
+let int = 0
+let int2 = 0
+
+like.addEventListener('click',function(){
+    int += 1
+    numberoflike.innerHTML = int
+})
+
+dislike.addEventListener('click',function(){
+    int2 += 1
+    numberofdislike.innerHTML = int2
+})
+
+
+
 // Allow users to send messages by pressing enter instead of clicking the Send button
 document.addEventListener("keypress", function (event) {
     if (event.code === "Enter") {
@@ -27,6 +47,7 @@ function addMessage(chatMessage) {
     let chat = document.getElementById('chat');
     chat.innerHTML += "<b>" + chatMessage['username'] + "</b>: " + chatMessage["comment"] + "<br/>";
 }
+
 
 // called when the page loads to get the chat_history
 function get_chat_history() {
