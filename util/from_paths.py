@@ -3,7 +3,7 @@ from util.router import Route
 from util.response import forbid, redirect
 from util.request import parse_multipart
 import util.chatdata as db
-from PIL import Image
+
 import io
 
 
