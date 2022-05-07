@@ -5,6 +5,8 @@ db = mongo_client["cse312"]
 
 users_collection = db ["users"]
 users_id_collection= db["users_id"]
+messages_collection = db["messages"]
+
 
 def get_next_id():
     id_object= users_id_collection.find_one({})
