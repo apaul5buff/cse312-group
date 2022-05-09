@@ -64,20 +64,6 @@
 <button onclick="sendMessage()">Send</button>
 
 <div id="chat"></div>
-
-
-<form action="/comment" method="post" enctype="multipart/form-data">
-    <label for = "form-name">Enter your name:</label>
-    <input id="form-name" type = "text" name = "commenter"><br />
-    
-    <label for= "form-comment"> comment: </label><br />
-    <input id = "form-comment" type ="text" name ="comment"><br />
-    
-    <input type = "submit" value = "Submit">
-    </form>
-    <br>
-    
-    {{comments}}
     
     <br>
     <form action="/imageupload" method="post" enctype="multipart/form-data">
@@ -95,10 +81,6 @@
     
     <script src="functions.js"></script>
     </body>
-    
-    </html>
-    <label for="chat-comment">Chat: </label>
-    <input id="chat-comment" type="text" name="comment">
     
 
  <br/>
