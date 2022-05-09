@@ -4,22 +4,137 @@ const socket = new WebSocket('ws://' + window.location.host + '/websocket');
 let webRTCConnection;
 
 let like = document.getElementById('increment');
-let dislike = document.getElementById('decrement')
+let dislike = document.getElementById('decrement');
+let happy = document.getElementById('1');
+let sad = document.getElementById('2');
+let dope = document.getElementById('DOPE');
+let crazy = document.getElementById('CRAZY');
+let reallyfunny = document.getElementById('really funny');
+let ok = document.getElementById('OK');
+let agree = document.getElementById('agree');
+let disagree = document.getElementById('disagree');
+let mad = document.getElementById('mad');
+let dmmessage = document.getElementById('response')
 
-let numberoflike = document.getElementById('LIKE')
-let numberofdislike = document.getElementById('DISLIKE')
-let int = 0
-let int2 = 0
+
 
 like.addEventListener('click',function(){
-    int += 1
-    numberoflike.innerHTML = int
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'I LIKE IT!' + 'response to:' + dmmessage.value}))
+    }
+    else {
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'I LIKE IT!'}))
+    }
 })
 
 dislike.addEventListener('click',function(){
-    int2 += 1
-    numberofdislike.innerHTML = int2
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD'}))
+    }
 })
+
+happy.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'HA~HA~HA~' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'HA~HA~HA~'}))
+    }
+})
+
+sad.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Im crying' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Im crying'}))
+    }
+})
+
+dope.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': "DAMN that's DOPEEEEEE" + 'response to:' + dmmessage}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': "DAMN that's DOPEEEEEE"}))
+    }
+
+})
+
+crazy.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'CrAzYyYyYyYy' + 'response to:' + dmmessage}))
+    }
+    else {
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'CrAzYyYyYyYy'}))
+    }
+})
+
+reallyfunny.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'LMAO!!!' + 'response to:' + dmmessage}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'LMAO!!!'}))
+    }
+
+})
+
+ok.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'OK' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'OK'}))
+    }
+
+})
+
+agree.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Agree' + 'response to:' + dmmessage.value}))
+    }
+    else {
+       socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Agree'}))
+    }
+
+})
+
+disagree.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Disagree' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Disagree'}))
+    }
+
+})
+
+dislike.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD'}))
+    }
+
+})
+
+mad.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'You pissing me off!' + 'response to:' + dmmessage.value}))
+    }
+    else{
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'You pissing me off!'}))
+    }
+
+})
+
+
+
 
 
 

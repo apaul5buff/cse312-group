@@ -1,5 +1,4 @@
 def render_templete(html_filename, data):
-
     with open(html_filename) as html_file:
         template= html_file.read()
         template= replace_placeholders(template,data)
