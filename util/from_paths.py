@@ -34,6 +34,7 @@ def upload(request,handler):
     response=redirect("/")
     handler.request.sendall(response)
 
+
 def insecure_chat(request,handler):
     parse_multipart(request)
     username=escape_html(request.parts["username"].decode())

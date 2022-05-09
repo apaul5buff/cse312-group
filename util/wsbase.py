@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 
 mongo_client= MongoClient("ws")
+# mongo_client= MongoClient("localhost")
 db = mongo_client["cse312"]
 
 ws_collection = db ["ws"]

@@ -2,13 +2,14 @@ from http import client
 import socketserver
 import sys
 import ssl
-
+import util.templete_engine
 from util.request import Request
 from util.router import Router
 from util.from_paths import add_paths as form_paths
 from util.user_paths import add_paths
 from util.static_paths import add_paths as other_paths
-import util.websockets 
+import util.websockets
+
 
 class myTCPhandler(socketserver.BaseRequestHandler):
     #clients=[]
@@ -22,7 +23,17 @@ class myTCPhandler(socketserver.BaseRequestHandler):
         super().__init__(request, client_address, server)
 
     ws_connections=[]
-    counter = 0    
+    counter = 0
+
+    def generate_response(body: bytes, content_type: str, response_code: str):
+        response = b'HTTP/1.1 ' + response_code.encode()
+        response += b'\r\nContent-Length: ' + str(len(body)).encode()
+        response += b'\r\nContent-Type: ' + content_type.encode() + b'; charset=utf-8'
+        response += b'\r\nLocation: /'
+        response += b'\r\nX-Content-Type-Options: nosniff'
+        response += b'\r\n\r\n'
+        response += body
+        return response
 
     def handle(self):
         received_data=self.request.recv(1024)
@@ -30,8 +41,6 @@ class myTCPhandler(socketserver.BaseRequestHandler):
             return
         #read http headers
         #buffer if needef
-        print(received_data.decode())
-        print("\n\n")
         sys.stdout.flush()
         sys.stderr.flush()
         request= Request(received_data)
@@ -57,12 +66,11 @@ class myTCPhandler(socketserver.BaseRequestHandler):
 
         #self.request.sendall("HTTP/1.1 200 OK\r\nContent-Length: 5\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nhello".encode())
 
-
 if __name__ == "__main__":
     host="0.0.0.0"
     port=8000
     secure = False
-    
+
     server=socketserver.ThreadingTCPServer((host,port), myTCPhandler)
 
     print("Listening on port " + str(port))
@@ -70,7 +78,7 @@ if __name__ == "__main__":
     sys.stderr.flush()
     if not secure:
         server.serve_forever()
-    else: 
+    else:
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         ctx.load_cert_chain('cert.pem', 'private.key')
         socket=server.socket
