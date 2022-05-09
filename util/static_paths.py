@@ -1,8 +1,10 @@
 from util.router import Route
 from util.response import generate_response
+from util.response import *
 from util.templete_engine import render_templete
 import util.chatdata as db
 import secrets
+from util.request import *
 
 def add_paths(router):
     router.add_route(Route('GET', '/hi', hi)) 
@@ -11,6 +13,7 @@ def add_paths(router):
     router.add_route(Route('GET', "/style.css", style))
     router.add_route(Route('GET',"/image/.", images))
     router.add_route(Route('POST', "/register", registration))
+    router.add_route(Route('POST', "/imageupload", imageupload))
     router.add_route(Route('GET', "/$", home))
 
 def home(request, handler):
@@ -19,13 +22,15 @@ def home(request, handler):
     token=secrets.token_urlsafe(16)
     db.add_token(token)
 
-    content= render_templete("public/index.html",{"image_name": "Parrot!",
-    "image_filename":"parrot.jpg", "loop_data":posts, "loop_img":img, "token":token})
-
-    response=generate_response(content.encode(),"text/html; charset=t=utf-8", "200 OK")
+    templated_homepage = render_templete(handler.images)
+    # content= render_homepage("public/index.html",{"image_name": "Eagle!",
+    # "image_filename":"parrot.jpg", "loop_data":posts, "loop_img":img, "token":token})
+    # print(f"Templated homepage data: {templated_homepage}")
+    response=generate_response(templated_homepage.encode())
+    print(f"Templated HTML response: {response}")
     handler.request.sendall(response)
     
-    send_file("public/index.html", "text/html; charset=utf-8", request, handler)
+    # send_file("public/index.html", "text/html; charset=utf-8", request, handler)
 
 def js(request, handler):
     send_file("functions.js", "text/javascript; charset=utf-8", request, handler)
@@ -48,6 +53,19 @@ def send_file(filename, mime_type, request, handler):
 def registration(request, handler):
     print(request.body)
     response= generate_response("WORKED".enocode(),"text/plain", response, handler)
+    handler.request.sendall(response)
+
+def imageupload(request, handler):
+    parse_multipart(request)
+    new_file_name = "./image/image%d.jpg" % len(handler.images)
+    handler.images.append(new_file_name)
+    
+    with open(new_file_name, "wb") as content:
+        content.write(request.parts["image"])
+        
+    # print(handler.images)
+    response = redirect("/")
+
     handler.request.sendall(response)
 
 def hello(request, handler):  

@@ -12,10 +12,12 @@
 </p>
 
 <p>
-    Here's a {{image_name}}
+    Here's a flamingo:
 </p>
 
-<img src="image/{{image_filename}}" alt="It's a {{image_name}}" class="my_image"/>
+<img src="image/flamingo.jpg" alt="It's a flamingo" class="my_image"/>
+
+
 <br/><br/>
 
 <p>
@@ -64,23 +66,40 @@
 <div id="chat"></div>
 
 
-<br/><br/>
-<form action="/image-upload" id="image-form" method="post" enctype="multipart/form-data">
-    <input value={{token}} name="xsrf_token" hidden> 
-    <label for="image-form-comment">Comment: </label>
-    <textarea id="image-form-comment" name="comment" cols="40" rows="6"></textarea>
-    <br/>
-    <label for="form-file">Image: </label>
-    <input id="form-file" type="file" name="upload">
-    <input type="submit" value="Post">
- </form>
-
- {{loop_img}}
- <b>{{comment}}</b>: <img src="image/{{upload}}" ><br/>
- {{end_loop_img}}
-
- <br/><br/>
-
+<form action="/comment" method="post" enctype="multipart/form-data">
+    <label for = "form-name">Enter your name:</label>
+    <input id="form-name" type = "text" name = "commenter"><br />
+    
+    <label for= "form-comment"> comment: </label><br />
+    <input id = "form-comment" type ="text" name ="comment"><br />
+    
+    <input type = "submit" value = "Submit">
+    </form>
+    <br>
+    
+    {{comments}}
+    
+    <br>
+    <form action="/imageupload" method="post" enctype="multipart/form-data">
+    <label for="form-image"> Choose Ur Image: </label><br />
+    <input id = "form-image" type ="file" name ="image"><br />
+    <br />
+    
+    <label for= "caption"> Caption: </label><br />
+    <input id = "caption" type ="text" name ="caption"><br />
+    
+    <input type = "submit" value = "Submit">
+    </form>
+    
+    {{images}}
+    
+    <script src="functions.js"></script>
+    </body>
+    
+    </html>
+    <label for="chat-comment">Chat: </label>
+    <input id="chat-comment" type="text" name="comment">
+    
 
  <br/>
  <hr/>
