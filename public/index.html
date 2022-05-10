@@ -1,75 +1,78 @@
 <html>
 <head>
-    <title>CSE312 Sample Front End</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>College Dropouts</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link rel="shortcut icon" type="image/jpg" href="image/jesse.jpg"/>
 </head>
-<body onload="welcome();">
+<body>
+<!-- <body onload="welcome();"> -->
+    <div id="login_page">
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/index.html" class="active">profile</a>
+            <a href="/settings.html">Settings</a>
+            <a href="#">DMs</a>   
+            <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+            </div>
+            <div id="main">
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+        </div>
+    </div>
+    <div class="lside">
+        <h1 id="User" align="center">Hi {{welcome}}, welcome to College Dropout's A++ Page :)</h1>
+        <div id="image_upload">
+            <form action="/imageupload" method="post" enctype="multipart/form-data">
+                <label for="form-image"> Choose Your Image: </label>
+                <input id = "form-image" type ="file" name ="image"><br>
+                <label for= "caption"> Caption: </label>
+                <input id = "caption" type ="text" name ="caption">
+                <input type = "submit" value = "Post">
+            </form>
+        
+            {{images}}
+            <div id="img_caption"></div>
+        </div>
+    </div>
+    <div id="my_fav_prof">{{fav_prof}}</div>
+    <div class ="rside">
+        <div id="direct_msg">
+            <label for="dm-user">Send DM To: </label>
+            <input id="dm-user" type="text" name="user">
+            <br/><br/>
+            <label for="dm-mess">DM Message: </label>
+            <input id="dm-mess" type="text" name="mess">
+            <button onclick="sendDm()">Press Enter to DM</button>
+            <input id="xsrf" name ="xsrf" type="hidden" value ="{{xsrf}}">
+            <div id="invalid_xsrf"></div>
+        </div>
+        <br/><br/>
+        <div id="online_users">
+            <p>Users Online: (refresh to update)</p>
+            <div id="allUsers"></div>
+        </div>    
+        <div>
+            <label for="fav_prof">Choose a favorite UB professor:</label>
+            <!-- <input id="fav_prof" name ="fav_prof" type="text"> -->
 
-<h1>CSE312 Sample Page</h1>
+                <select name="profs" id="fav_prof">
+                    <option value="Jesse">Jesse</option>
+                    <option value="Hartloff">Hartloff</option>
+                    <option value="Jesse Hartloff">Jesse Hartloff</option>
+                    <option value="JLF">JLF</option>
+                    <option value="JesseLeeHartloff">JesseLeeHartloff</option>
+                    <option value="ProfJesse">ProfJesse</option>
+                    <option value="Im a psychopath">Not Jesse</option>
+                </select>
+            <input id="username" name ="username" type="hidden" value ="{{username}}">
+            <br><br>
+            <button class = "btn" onclick="add_prof()">add favorite professor</button><br>
+        </div>
 
-<p id="paragraph">
-    This text is from the HTML file 🙂
-</p>
-
-<p>
-    Here's a {{image_name}}
-</p>
-
-<img src="image/{{image_filename}}" alt="It's a {{image_name}}" class="my_image"/>
-
-
-<label for="chat-comment">Chat: </label>
-<input id="chat-comment" type="text" name="comment">
-
-<button onclick="sendMessage()">Send</button>
-
-<div id="chat"></div>
-
-<br/>
-<button onclick="startVideo()">Start My Video</button>
-<br/>
-<button onclick="connectWebRTC()">Start Video Chat</button>
-<br/>
-
-<video id="myVideo" autoplay muted></video>
-<br/>
-<video id="otherVideo" autoplay></video>
-
-
-<br/><br/>
-<form action="/image-upload" id="image-form" method="post" enctype="multipart/form-data">
-    <input value={{token}} name="xsrf_token" hidden> 
-    <label for="image-form-comment">Comment: </label>
-    <textarea id="image-form-comment" name="comment" cols="40" rows="6"></textarea>
-    <br/>
-    <label for="form-file">Image: </label>
-    <input id="form-file" type="file" name="upload">
-    <input type="submit" value="Post">
- </form>
-
- {{loop_img}}
- <b>{{comment}}</b>: <img src="image/{{upload}}" ><br/>
- {{end_loop_img}}
-
- <br/><br/>
-<form action="/insecure-chat" id="chat-form" method="post" enctype="multipart/form-data">
-    <label for="chat-form-username">Username: </label>
-    <input id="chat-form-username" type="text" name="username"/>
-    <br/>
-    <label for="chat-form-message">Message: </label>
-    <input id="chat-form-message" type="text" name="message">
-    <input type="submit" value="Post">
-</form>
-
- {{loop}}
- <b>{{username}}</b>: {{message}}<br/>
- {{end_loop}}
-
- <br/>
- <hr/>
-
-
-
-<script src="functions.js"></script>
+    </div>
+    <div class="footer">
+        Created by Edited by College Dropouts. CSE312 Spring 2022
+        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+    </div>  
+<script src="static/functions.js"></script>
 </body>
 </html>

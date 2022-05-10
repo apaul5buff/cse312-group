@@ -1,39 +1,37 @@
-
+import hashlib
 import json
+import secrets
+# import bcrypt
 import util.database as db
+import util.usersDB as usersdb
 from util.response import generate_response
 from util.router import Route
 
 def add_paths(router):
-    router.add_route(Route('POST', '/user', create))
-    router.add_route(Route('GET', '/users/.', retrieve))
-    router.add_route(Route('GET', '/users', list_all))
-    router.add_route(Route('PUT', '/users/.', update))
-    router.add_route(Route('DELETE','/users/', delete))
 
+    router.add_route(Route("GET", "/users/.", login__))
+    router.add_route(Route("PUT", "/users/.", update))
+    router.add_route(Route("DELETE","/users/", delete))
+    # router.add_route(Route("GET", "/login", login))
 
-def create(request, handler):
-    body_string =request.body.decode()
-    body_dict=json.loads(body_string)
-    body_dict['id']= db.get_next_id()
+# def login(request, handler):
+#     html = open("public/login.html","rb").read()
+#     byteHTML = bytearray(html)
+#     sizeHTML = len(byteHTML)
+#     handler.request.sendall(("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nContent-Length: "+str(sizeHTML)+"\r\n\r\n").encode()+html)
 
-    db.create(body_dict)
-
-    response = generate_response(json.dumps(body_dict).encode(), 'application/json', '201 Created')
-    handler.request.sendall(response)
-
-def list_all(request, handler):
-    response = generate_response(json.dumps(db.list_all()).encode(), 'application/json', "200 OK")
-    handler.request.sendall(response)
-
-def retrieve(request, handler):
+def login__(request, handler):
     body_string =request.path
     id= body_string[7:]
 
     ret=db.retreive(int(id))
     if(ret==None):
         four_oh_four(handler)
-    response= generate_response(json.dumps(ret).encode(), 'application/json', "200 OK")
+    response= generate_response(json.dumps(ret).encode(), "application/json", "200 OK")
+    handler.request.sendall(response)
+
+def list_all(request, handler):
+    response = generate_response(json.dumps(db.list_all()).encode(), "application/json", "200 OK")
     handler.request.sendall(response)
 
 def update(request, handler):
@@ -44,7 +42,7 @@ def update(request, handler):
     ret=db.update(int(id),body_dict)
     if(ret==None):
         four_oh_four(handler)
-    response= generate_response(json.dumps(ret).encode(), 'application/json', "200 OK")
+    response= generate_response(json.dumps(ret).encode(), "application/json", "200 OK")
     handler.request.sendall(response)
 
 def delete(request, handler):

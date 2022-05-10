@@ -65,7 +65,6 @@ if __name__ == "__main__":
     
     server=socketserver.ThreadingTCPServer((host,port), myTCPhandler)
 
-    print("Listening on port " + str(port))
     sys.stdout.flush()
     sys.stderr.flush()
     if not secure:
@@ -75,5 +74,5 @@ if __name__ == "__main__":
         ctx.load_cert_chain('cert.pem', 'private.key')
         socket=server.socket
         with ctx.wrap_socket(socket, server_side=True) as secure_socket:
-            server.sokcet = secure_socket
+            server.socket = secure_socket
             server.serve_forever()

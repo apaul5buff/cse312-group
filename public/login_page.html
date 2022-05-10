@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>login page</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link rel="shortcut icon" type="image/jpg" href="image/jesse.jpg"/>
+</head>
+<body>
+
+    <h1>Login Below!</h1>
+    <div id="login">
+        <label for = "username">Username:</label><br>
+        <input id = "username" type="text" name="username"><br>
+        <label for = "password">Password:</label><br>
+        <input id = "password" type="password" name="password"><br>
+        <input type = "checkbox" id="show" onclick="show_password()"value="Show Password">
+        <label for = "show">Show Password</label><br><br>
+        <button class = "btn" onclick="login()">Login</button>
+        <button class = "btn" onclick="register()">Register</button><br>
+    </div>
+    <div id="User"></div>
+    <a href="/">homepage</a>
+    <div class="footer">
+        Created by Edited by College Dropouts. CSE312 Spring 2022
+    </div>  
+  <script src='static/functions.js'></script>
+  </body>
+
+</html>

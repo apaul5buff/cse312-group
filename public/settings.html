@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>{{username}}'s Settings</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link rel="shortcut icon" type="image/jpg" href="image/jesse.jpg"/>
+</head>
+<body>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/index.html">profile</a>
+        <a href="/settings.html" class="active">Settings</a>
+        <a href="#">DMs</a>  
+        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+        </div>
+        <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <h1 id="welcome_back">Settings</h1>
+    <div id="profile_changes">
+        <div id="username_change">
+            
+        </div>
+        <div id="password_change">
+            
+        </div>
+    </div>
+
+    <div>
+        <form action="/fav_prof" method="post">
+            <label for="profs">Choose a favorite UB professor:</label>
+                <select name="fav_prof" id="profs">
+                    <option value="Jesse">Jesse</option>
+                    <option value="Hartloff">Hartloff</option>
+                    <option value="Jesse Hartloff">Jesse Hartloff</option>
+                    <option value="JLF">JLF</option>
+                    <option value="JesseLeeHartloff">JesseLeeHartloff</option>
+                    <option value="ProfJesse">ProfJesse</option>
+                    <option value="Im a psychopath">Not Jesse</option>
+                </select>
+                <input id="username" name ="username" type="hidden" value ="{{username}}">
+            <br><br>
+            <input type="submit" value="Submit favorte professor">
+        </form>
+    </div>
+    
+    <div class="footer">
+        Created by Edited by College Dropouts. CSE312 Spring 2022
+    </div>  
+<script src="static/functions.js"></script>
+</body>
+</html>

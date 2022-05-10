@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>{{username}}'s profile</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link rel="icon" type="image/gif" href="image/cryingfroge.gif"/>
+</head>
+<body>
+  <div id="mySidebar" class="sidebar">
+    <a href="/" class="active" >Home</a>
+    <a href="/allusers">Online Users</a>
+    <a href="/dmroom">DMs</a>   
+    <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+  </div>
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">&#9776;</button>
+  </div>
+  <img src="image/{{profile_pic}}" alt="{{username}}'s profile pic" class="my_image"/>
+
+  <h1>Welcome Back {{username}} !</h1>
+
+<p id ="paragraph" class="paragraph" align ="center"></p>
+
+<script src='static/functions.js'></script>
+</body>
+</html>
