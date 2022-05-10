@@ -14,22 +14,44 @@ let ok = document.getElementById('OK');
 let agree = document.getElementById('agree');
 let disagree = document.getElementById('disagree');
 let mad = document.getElementById('mad');
+let emo = document.getElementById('EMO');
+let wtf = document.getElementById('WTF');
 let dmmessage = document.getElementById('response')
 
 
 
+emo.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'eMoTiOnAl DaMaNge' + '         response to:' + dmmessage.value}))
+    }
+    else {
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'eMoTiOnAl DaMaNge'}))
+    }
+})
+
+
+wtf.addEventListener('click',function(){
+    if (dmmessage.value.toString() !== ""){
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'What did I SAW??????' + '         response to:' + dmmessage.value}))
+    }
+    else {
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'What did I SAW??????'}))
+    }
+})
+
 like.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'I LIKE IT!' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'I LIKE IT!' + '         response to:' + dmmessage.value}))
     }
     else {
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'I LIKE IT!'}))
     }
 })
 
+
 dislike.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD'}))
@@ -38,7 +60,7 @@ dislike.addEventListener('click',function(){
 
 happy.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'HA~HA~HA~' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'HA~HA~HA~' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'HA~HA~HA~'}))
@@ -47,7 +69,7 @@ happy.addEventListener('click',function(){
 
 sad.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Im crying' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Im crying' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Im crying'}))
@@ -56,7 +78,7 @@ sad.addEventListener('click',function(){
 
 dope.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': "DAMN that's DOPEEEEEE" + 'response to:' + dmmessage}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': "DAMN that's DOPEEEEEE" + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': "DAMN that's DOPEEEEEE"}))
@@ -66,7 +88,7 @@ dope.addEventListener('click',function(){
 
 crazy.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'CrAzYyYyYyYy' + 'response to:' + dmmessage}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'CrAzYyYyYyYy' + '         response to:' + dmmessage.value}))
     }
     else {
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'CrAzYyYyYyYy'}))
@@ -75,7 +97,7 @@ crazy.addEventListener('click',function(){
 
 reallyfunny.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'LMAO!!!' + 'response to:' + dmmessage}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'LMAO!!!' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'LMAO!!!'}))
@@ -85,7 +107,7 @@ reallyfunny.addEventListener('click',function(){
 
 ok.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'OK' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'OK' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'OK'}))
@@ -95,7 +117,7 @@ ok.addEventListener('click',function(){
 
 agree.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Agree' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Agree' + '         response to:' + dmmessage.value}))
     }
     else {
        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Agree'}))
@@ -105,7 +127,7 @@ agree.addEventListener('click',function(){
 
 disagree.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Disagree' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Disagree' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'Disagree'}))
@@ -115,7 +137,7 @@ disagree.addEventListener('click',function(){
 
 dislike.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'NAH, NO GOOD'}))
@@ -125,7 +147,7 @@ dislike.addEventListener('click',function(){
 
 mad.addEventListener('click',function(){
     if (dmmessage.value.toString() !== ""){
-        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'You pissing me off!' + 'response to:' + dmmessage.value}))
+        socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'You pissing me off!' + '         response to:' + dmmessage.value}))
     }
     else{
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'You pissing me off!'}))

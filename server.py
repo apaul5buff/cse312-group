@@ -12,7 +12,6 @@ import util.websockets
 
 
 class myTCPhandler(socketserver.BaseRequestHandler):
-    #clients=[]
     images = []
     
     def __init__(self, request, client_address, server):
