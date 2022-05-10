@@ -1,93 +1,56 @@
 <html>
 <head>
-    <title>CSE312 Sample Front End</title>
+    <title>College Dropouts</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body onload="welcome();">
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/" class="active">Home</a>
+        <a href="/imageupload">Images</a>
+        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+        </div>
+        <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <h1 id="User" align="center">Hi {{welcome}}, welcome to College Dropout's A++ Page :)</h1>
 
-<h1>CSE312 Sample Page</h1>
+    </div>
 
-<p id="paragraph">
-    This text is from the HTML file 🙂
-</p>
+    <div id="my_fav_prof">{{fav_prof}}</div><br>
+    <div>
+        <label for="fav_prof">Choose a favorite UB professor:</label>  
+            <select name="profs" id="fav_prof">
+                <option value="Jesse">Jesse</option>
+                <option value="Jesse">Hartloff</option>
+                <option value="Jesse">Jesse Hartloff</option>
+                <option value="Jesse">JLF</option>
+                <option value="Jesse">JesseLeeHartloff</option>
+                <option value="Jesse">ProfJesse</option>
+                <option value="I'm a psychopath">Not Jesse</option>
+            </select>
+        <input id="username" name ="username" type="hidden" value ="{{username}}">
+        <br>
+        <button class = "btn" onclick="add_prof()">add favorite professor</button><br>
+        <br>
+    </div>
+    <br/><br/>
+    <div>
+        <h3>Active Users:</h3>
+        <div id="allUsers"></div>
+    </div>
+    <br/><br/>
 
-<p>
-    Here's a flamingo:
-</p>
+    <label for="dm-user">Send DM To: </label>
+    <input id="dm-user" type="text" name="user">
+    <br/><br/>
+    <label for="dm-mess">DM Message: </label>
+    <input id="dm-mess" type="text" name="mess">
 
-<img src="image/flamingo.jpg" alt="It's a flamingo" class="my_image"/>
-
-
-<br/><br/>
-<div id="allUsers"></div>
-<br/><br/>
-
-<label for="dm-user">Send DM To: </label>
-<input id="dm-user" type="text" name="user">
-<br/><br/>
-<label for="dm-mess">DM Message: </label>
-<input id="dm-mess" type="text" name="mess">
-
-<button onclick="sendDm()">Press Enter to DM</button>
-
-<br/><br/>
-<label for="chat-comment">Chat: </label>
-<input id="chat-comment" type="text" name="comment">
-
-<button onclick="sendMessage()">Send</button>
-
-<div id="chat"></div>
-
-<br/>
-<button onclick="startVideo()">Start My Video</button>
-<br/>
-<button onclick="connectWebRTC()">Start Video Chat</button>
-<br/>
-
-<video id="myVideo" autoplay muted></video>
-<br/>
-<video id="otherVideo" autoplay></video>
-
-<form action="/comment" method="post" enctype="multipart/form-data">
-    <label for = "form-name">Enter your name:</label>
-    <input id="form-name" type = "text" name = "commenter"><br />
-    
-    <label for= "form-comment"> comment: </label><br />
-    <input id = "form-comment" type ="text" name ="comment"><br />
-    
-    <input type = "submit" value = "Submit">
-    </form>
-    <br>
-    
-    {{comments}}
-    
-    <br>
-    <form action="/imageupload" method="post" enctype="multipart/form-data">
-    <label for="form-image"> Choose Ur Image: </label><br />
-    <input id = "form-image" type ="file" name ="image"><br />
-    <br />
-    
-    <label for= "caption"> Caption: </label><br />
-    <input id = "caption" type ="text" name ="caption"><br />
-    
-    <input type = "submit" value = "Submit">
-    </form>
-    
-    {{images}}
-    
+    <button onclick="sendDm()">Press Enter to DM</button>
+    <div class="footer">
+        Created by Edited by College Dropouts. CSE312 Spring 2022
+        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+    </div>  
     <script src="functions.js"></script>
-    </body>
-    
-    </html>
-    <label for="chat-comment">Chat: </label>
-    <input id="chat-comment" type="text" name="comment">
-    
-
- <br/>
- <hr/>
-
-
-
-<script src="functions.js"></script>
 </body>
 </html>
