@@ -22,7 +22,6 @@ def add_paths(router):
     router.add_route(Route("GET", "/register", registered))
     router.add_route(Route("GET", "/login", login))
     router.add_route(Route("POST", "/fav_prof", add_prof))
-    router.add_route(Route("GET", "/fav_prof", prof_added))
     router.add_route(Route("GET", "/imageupload", image))
 
 def image(request, handler):
@@ -167,12 +166,15 @@ def newlogin(request, handler):
     body = request.body
     body_dict = json.loads(body)
     #get username and password
-    username = body_dict["username"]
-    password = (body_dict["password"]).encode()
-    #gen salt and append to password                    
-    salt = usersdb.retrieve_salt(username)
-    hashed_login = bcrypt.hashpw(password,salt)
-    hash_from_db = usersdb.retrieve_hash(username)
+    if "fav_prof" in body_dict:
+        add_prof(request,handler)
+    else:
+        username = body_dict["username"]
+        password = (body_dict["password"]).encode()
+        #gen salt and append to password                    
+        salt = usersdb.retrieve_salt(username)
+        hashed_login = bcrypt.hashpw(password,salt)
+        hash_from_db = usersdb.retrieve_hash(username)
     
     # true if password matches
     if hashed_login == hash_from_db:
@@ -194,8 +196,3 @@ def add_prof(request:Request, handler):
     fav = body_dict["fav_prof"]
     usersdb.add_fav(username,fav)
     handler.request.sendall(("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nContent-Length: 0\r\n\r\n").encode())
-
-def prof_added(handler):
-    response  = redirect("/")
-    handler.request.sendall(response)
-

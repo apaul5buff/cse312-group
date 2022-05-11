@@ -4,17 +4,13 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body onload="welcome();">
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/" class="active">Home</a>
-        <a href="/imageupload">Images</a>
-        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
-        </div>
-        <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776;</button>
-        <h1 id="User" align="center">Hi {{welcome}}, welcome to College Dropout's A++ Page :)</h1>
-
+    <div id="navbar">
+        <ul>
+            <li><a href="/imageupload">Images</a></li>
+            <li style="float:right"><a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a></li>
+        </ul>
     </div>
+
 
     <div id="my_fav_prof">{{fav_prof}}</div><br>
     <div>
@@ -47,6 +43,36 @@
     <input id="dm-mess" type="text" name="mess">
 
     <button onclick="sendDm()">Press Enter to DM</button>
+    <h1>
+        User Response:
+    </h1>
+    
+    <div id="userlikenolike">
+        <button id="increment">LIKE</button>
+        <button id="decrement">DISLIKE</button>
+        <button id="1">HAPPY</button>
+        <button id="2">SAD</button>
+        <button id="DOPE">DOPE</button>
+        <button id="CRAZY">CRAZY</button>
+        <button id="really funny">REALLY FUNNY HAHA</button>
+        <button id="OK">OK</button>
+        <button id="agree">Agree</button>
+        <button id="disagree">Disagree</button>
+        <button id="mad">Damn you</button>
+        <button id="EMO">Emotional Dmg</button>
+        <button id="WTF">WTF?</button>
+    
+        <label for="response">Reply to: </label>
+        <input id="response" type="text" name="ff">
+    </div>
+    
+    <br/><br/>
+    <label for="chat-comment">Chat: </label>
+    <input id="chat-comment" type="text" name="comment">
+    <button onclick="sendMessage()">Send</button>
+    
+    <div id="chat"></div>
+
     <div class="footer">
         Created by Edited by College Dropouts. CSE312 Spring 2022
         <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
