@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Image Board</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="shortcut icon" type="image/jpg" href="image/jesse.jpg"/>
+    </head>
+    <body>
+        <div id="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Other</a></li>
+                <li><a href="#">Amazing</a></li>
+                <li><a href="#">Fun</a></li>
+                <li><a href="#">Features</a></li>
+            </ul>
+        </div>
+
+        <form action="/imageupload" method="post" enctype="multipart/form-data">
+        <label for="form-image"> Choose Ur Image: </label><br />
+        <input id = "form-image" type ="file" name ="image"><br />
+        <br />
+        
+        <label for= "caption"> Caption: </label><br />
+        <input id = "caption" type ="text" name ="caption"><br />
+        
+        <input type = "submit" value = "Submit">
+        </form>
+        
+        {{images}}<br>
+        {{comments}}<br>
+        
+        <div class="footer">
+            Created by Edited by College Dropouts. CSE 312 Spring 2022
+            <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+        </div>  
+    </body>
+</html>

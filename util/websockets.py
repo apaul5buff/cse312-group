@@ -1,4 +1,5 @@
 from urllib import response
+from util.static_paths import get_username
 import util.wsbase as db
 
 import socketserver
@@ -41,7 +42,7 @@ def websocket_request(request:Request,handler:socketserver.BaseRequestHandler):
     response=ws_response(compute_accept(request.headers["Sec-WebSocket-Key"]))
     handler.request.sendall(response)
 
-    username= "user" + str(random.randint(0,1000))
+    username= get_username(request)
     myTCPhandler.ws_connections.append({'username':username,'socket':handler})
     while True:
         ws_data=handler.request.recv(1024)

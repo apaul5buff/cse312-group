@@ -2,90 +2,85 @@
 <head>
     <title>College Dropouts</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="shortcut icon" type="image/jpg" href="image/jesse.jpg"/>
+
 </head>
 <body onload="welcome();">
+    <div id="navbar">
+        <ul>
+            <li><a href="/imageupload">Image Board</a></li>
+            <li><a href="#">Other</a></li>
+            <li><a href="#">Amazing</a></li>
+            <li><a href="#">Fun</a></li>
+            <li><a href="#">Features</a></li>
+        </ul>
+    </div>
+    <div class="lside">
+        <h1 id="my_fav_prof">{{fav_prof}}</h1><br>
+        <br>
+        <div class="full_chat">
+            <div class="chat" align="center"><b>Chat:</b></div>
+            <div id="chat"></div>
+            <div class="chat" align="center">
+                <label for="chat-comment"></label>
+                <input id="chat-comment" type="text" name="comment">
+                <button onclick="sendMessage()">Chat</button>
+            </div>
+            <div id="userlikenolike">
+                <button id="increment">LIKE</button>
+                <button id="decrement">DISLIKE</button>
+                <button id="1">HAPPY</button>
+                <button id="2">SAD</button>
+                <button id="DOPE">DOPE</button>
+                <button id="CRAZY">CRAZY</button>
+                <button id="really funny">REALLY FUNNY HAHA</button>
+                <button id="OK">OK</button>
+                <button id="agree">Agree</button>
+                <button id="disagree">Disagree</button>
+                <button id="mad">Damn you</button>
+                <button id="EMO">Emotional Dmg</button>
+                <button id="WTF">WTF?</button>
+                <label for="response">Reply to: </label>
+                <input id="response" type="text" name="ff">
+            </div>
+        </div>
+    </div>
+    <div class="rside">
+        <div>
+            <label for="fav_prof">Choose a favorite UB professor:</label>  
+            <select name="profs" id="fav_prof">
+                <option value="Jesse">Jesse</option>
+                <option value="Hartloff">Hartloff</option>
+                <option value="Jesse Hartloff">Jesse Hartloff</option>
+                <option value="JLF">JLF</option>
+                <option value="JesseLeeHartloff">JesseLeeHartloff</option>
+                <option value="ProfJesse">ProfJesse</option>
+                <option value="I'm a psychopath">Not Jesse</option>
+            </select>
+            <input id="username" name ="username" type="hidden" value ="{{username}}">
+            <br>
+            <button class = "btn" onclick="add_prof()">add favorite professor</button><br>
+            <br>
+        </div>
+        <div>
+            <h3>Active Users:</h3>
+            <div id="allUsers"></div>
+        </div>
+        <br/><br/>
+        <label for="dm-user">Send DM To: </label>
+        <input id="dm-user" type="text" name="user">
+        <br>
+        <label for="dm-mess">DM Message: </label>
+        <input id="dm-mess" type="text" name="mess">
+        <button onclick="sendDm()">Press Enter to DM</button>
+        
+    </div>
 
-<h1>Collge Dropout Page :)</h1>
-
-<p id="paragraph">
-    This is all based on HW code.
-</p>
-
-<p>
-    Here's a flamingo:
-</p>
-
-<img src="image/flamingo.jpg" alt="It's a flamingo" class="my_image"/>
-
-
-<br/><br/>
-
-<p>
-    Users Online: (refresh to update)
-</p>
-<div id="allUsers"></div>
-<br/><br/>
-
-<label for="dm-user">Send DM To: </label>
-<input id="dm-user" type="text" name="user">
-<label for="dm-mess">DM Message: </label>
-<input id="dm-mess" type="text" name="mess">
-<p>
-    Press Enter to DM
-</p>
-
-
-<h1>
-    User Response:
-</h1>
-
-<div id="userlikenolike">
-    <button id="increment">LIKE</button>
-    <button id="decrement">DISLIKE</button>
-    <button id="1">HAPPY</button>
-    <button id="2">SAD</button>
-    <button id="DOPE">DOPE</button>
-    <button id="CRAZY">CRAZY</button>
-    <button id="really funny">REALLY FUNNY HAHA</button>
-    <button id="OK">OK</button>
-    <button id="agree">Agree</button>
-    <button id="disagree">Disagree</button>
-    <button id="mad">Damn you</button>
-    <button id="EMO">Emotional Dmg</button>
-    <button id="WTF">WTF?</button>
-
-    <label for="response">Response: </label>
-    <input id="response" type="text" name="ff">
-</div>
-
-<br/><br/>
-<label for="chat-comment">Chat: </label>
-<input id="chat-comment" type="text" name="comment">
-<button onclick="sendMessage()">Send</button>
-
-<div id="chat"></div>
-    
-    <br>
-    <form action="/imageupload" method="post" enctype="multipart/form-data">
-    <label for="form-image"> Choose Ur Image: </label><br />
-    <input id = "form-image" type ="file" name ="image"><br />
-    <br />
-    
-    <label for= "caption"> Caption: </label><br />
-    <input id = "caption" type ="text" name ="caption"><br />
-    
-    <input type = "submit" value = "Submit">
-    </form>
-    
-    {{images}}
-    
+    <div class="footer">
+        Created by Edited by College Dropouts. CSE 312 Spring 2022
+        <a href="https://github.com/apaul5buff/cse312-group/" target="_blank" rel="noopener noreferrer"><img src= "image/GitHub-Mark-32px.png" alt="GitHub Mark"/></a>
+    </div>  
     <script src="functions.js"></script>
-    </body>
-    
 
- <br/>
- <hr/>
-
-<script src="functions.js"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@ services:
     image: mongo:4.2.5
   ws:
     image: mongo:4.2.5
+  users:
+    image: mongo:4.2.5
   chat:
     image: mongo:4.2.5
     volumes:
