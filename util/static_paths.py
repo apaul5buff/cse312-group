@@ -111,8 +111,8 @@ def home(request, handler):
                 fav = usersdb. fav_prof_lookup(username)
                 if fav != False:
                     fav_prof = ""
-                    if fav != "Jesse":
-                        fav_prof = "hello, " + fav
+                    if fav == "I'm a psychopath":
+                        fav_prof = "hello, I'm "+username +" and " + fav
                     else:
                         fav_prof = "Hi my fav UB CSE professor is "+fav
                     #hey = username+""s chat:" #could use for dms

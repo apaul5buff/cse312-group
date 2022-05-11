@@ -9,13 +9,18 @@
   align-content: right;
 }
 body {
-    background-color: rgb(92, 50, 131);
+    background-color: rgb(65,18,24);
     color: white;
     font-family: 'Segoe UI';
 }
 
 h1{text-align: center;}
 p {text-align: center;}
+
+#navbar{
+  background-color: rgb(65,18,24);
+
+}
 
 .my_image {
     display: block;
@@ -30,15 +35,25 @@ p {text-align: center;}
   -webkit-transform: scale(1.5);
   transform: scale(1.5); 
 }
-.rcorners1 {
+
+.login {
+  width: 300px;
+  height: 250px;
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#login {
   border-radius: 25px;
-  background: rgba(245, 40, 146, 0.507);
+  background: rgba(232,152,46);
   padding: 20px;
+  font-size: 25px;
   text-align: center; 
 }
-
 .footer {
-  background-color: #333;
+  background-color: rgb(65,18,24);
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -58,11 +73,22 @@ width: 18%;
   top: 0px;
   right: 0px;
 }
-
+.chat{
+  background-color: rgb(232,152,46);
+  border-radius: 6px;
+}
+#chat{
+  overflow: auto;
+  height: 500px;
+  border: 2px solid rgb(232,152,46);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: rgb(65,18,24);
+}
 #userlikenolike{
-    height: 190px;
-    width: 480px;
-    border: 5px solid goldenrod;
+  border: 2px solid rgb(232,152,46);
+  background-color: rgb(232,152,46);
+  border-radius: 12px;
 }
 
 #LIKE{
@@ -73,16 +99,12 @@ width: 18%;
     size: A3;
 }
 
-h1{
-    color: black;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(65,18,24);
 }
 
 li {
@@ -98,5 +120,9 @@ li a {
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: rgb(221,184,144);
+}
+#navbar ul {
+  display: inline-block;
+  list-style-type: none;
 }
