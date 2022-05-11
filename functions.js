@@ -3,7 +3,6 @@ const socket = new WebSocket('ws://' + window.location.host + '/websocket');
 
 let webRTCConnection;
 
-
 // Allow users to send messages by pressing enter instead of clicking the Send button
 document.addEventListener("keypress", function (event) {
     if (event.code === "Enter") {
@@ -25,6 +24,7 @@ function sendMessage() {
         socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': comment}));
     }
 }
+
 // called when the page loads to get the chat_history
 function get_chat_history() {
     const request = new XMLHttpRequest();
@@ -215,6 +215,7 @@ function escape_html(input){
     return input.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
 }
 
+
 function add_prof() {
     const un = document.getElementById("username");
     const fav = document.getElementById("fav_prof");
@@ -230,6 +231,7 @@ function add_prof() {
     let data= {'username':username,'fav_prof':fav_prof}
     request.send(JSON.stringify(data));
 }
+
 
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";

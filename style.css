@@ -1,9 +1,3 @@
-
-/* body {
-    background-color: rgb(255, 153, 0);
-    color: white;
-} */
-
 #imageup{
   width: 120px;
   align-content: right;
@@ -126,3 +120,4 @@ li a:hover {
   display: inline-block;
   list-style-type: none;
 }
+
