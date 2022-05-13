@@ -256,11 +256,13 @@ function openNav() {
   let disagree = document.getElementById('disagree');
   let mad = document.getElementById('mad');
   let emo = document.getElementById('EMO');
+  let voting = document.getElementById('Startvoting')
   let wtf = document.getElementById('WTF');
   let dmmessage = document.getElementById('response')
+
   
   
-  
+
   emo.addEventListener('click',function(){
       if (dmmessage.value.toString() !== ""){
           socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'eMoTiOnAl DaMaNge' + '         response to:' + dmmessage.value}))
@@ -395,3 +397,51 @@ function openNav() {
       }
   
   })
+
+
+
+
+let votingsubject = document.getElementById('voting')
+let option1 = document.getElementById('option1')
+let option2 = document.getElementById('option2')
+let option3 = document.getElementById('option3')
+let option4 = document.getElementById('option4')
+let startvoting = document.getElementById('Startvoting')
+
+startvoting.addEventListener('click',function(){
+    socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': votingsubject.value + '\r\n\r\n' + '1:' + option1.value + '   ' + '2:' + option2.value + '   ' + '3:' + option3.value + '   ' + '4:' + option4.value + '   '}))
+})
+
+let button1 = document.getElementById('11')
+let button2 = document.getElementById('22')
+let button3 = document.getElementById('3')
+let button4 = document.getElementById('4')
+
+let displaynumber1 = document.getElementById('numberfor1')
+let num1 = 0
+let displaynumber2 = document.getElementById('numberfor2')
+let num2 = 0
+let displaynumber3 = document.getElementById('numberfor3')
+let num3 = 0
+let displaynumber4 = document.getElementById('numberfor4')
+let num4 = 0
+
+button1.addEventListener('click', function(){
+    num1 += 1;
+    displaynumber1.innerHTML = num1;
+})
+
+button2.addEventListener('click', function(){
+    num2 += 1;
+    displaynumber2.innerHTML = num2;
+})
+
+button3.addEventListener('click', function(){
+    num3 += 1;
+    displaynumber3.innerHTML = num3;
+})
+
+button4.addEventListener('click', function(){
+    num4 += 1;
+    displaynumber4.innerHTML = num4;
+})

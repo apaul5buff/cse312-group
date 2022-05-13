@@ -24,6 +24,8 @@ def add_paths(router):
     router.add_route(Route("POST", "/fav_prof", add_prof))
     router.add_route(Route("GET", "/imageupload", image))
 
+    router.add_route(Route('POST', "/vote", vote))
+
 def image(request, handler):
 
     token=secrets.token_urlsafe(16)
@@ -55,6 +57,13 @@ def send_file(filename, mime_type, request, handler):
         response= generate_response(body, mime_type, '200 OK')
         handler.request.sendall(response)
 
+
+
+
+
+
+
+
 def imageupload(request, handler):
     parse_multipart(request)
     new_file_name = "./image/image%d.jpg" % len(handler.images)
@@ -67,6 +76,26 @@ def imageupload(request, handler):
     response = redirect("/imageupload")
 
     handler.request.sendall(response)
+
+
+def vote(request, handler):
+    parse_multipart(request)
+    new_file_name = "./image/image%d.jpg" % len(handler.images)
+    handler.images.append(new_file_name)
+
+    with open(new_file_name, "wb") as content:
+        content.write(request.parts["image"])
+
+    # print(handler.images)
+    response = redirect("/vote")
+
+    handler.request.sendall(response)
+
+
+
+
+
+
 
 def hello(request, handler):  
     send_file("hello.txt", "text/plain; charset=utf-8",request, handler)
