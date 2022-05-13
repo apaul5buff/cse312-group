@@ -407,10 +407,7 @@ let option2 = document.getElementById('option2')
 let option3 = document.getElementById('option3')
 let option4 = document.getElementById('option4')
 let startvoting = document.getElementById('Startvoting')
-
-startvoting.addEventListener('click',function(){
-    socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': votingsubject.value + '\r\n\r\n' + '1:' + option1.value + '   ' + '2:' + option2.value + '   ' + '3:' + option3.value + '   ' + '4:' + option4.value + '   '}))
-})
+let endvoting = document.getElementById('Endvoting')
 
 let button1 = document.getElementById('11')
 let button2 = document.getElementById('22')
@@ -445,3 +442,16 @@ button4.addEventListener('click', function(){
     num4 += 1;
     displaynumber4.innerHTML = num4;
 })
+
+startvoting.addEventListener('click',function(){
+    socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': votingsubject.value + '\r\n\r\n' + '1:' + option1.value + '   ' + '2:' + option2.value + '   ' + '3:' + option3.value + '   ' + '4:' + option4.value + '   '}))
+})
+
+endvoting.addEventListener('click',function(){
+    socket.send(JSON.stringify({'messageType': 'chatMessage', 'comment': 'The Result Is:  ' + '    ' + 'Option 1 have--' + num1.toString() + ' votes|    |' + 'Option 2 have--' + num2.toString() + ' votes|    |' + 'Option 3 have--' + num3.toString() + ' votes|    |' + 'Option 4 have--' + num4.toString() + ' votes|    |'}))
+})
+
+
+
+
+
